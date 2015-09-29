@@ -7,14 +7,6 @@
   },
   "builders": [
     {
-      "type": "googlecompute",
-      "account_file": "{{user `account_file`}}",
-      "project_id": "{{user `project_id`}}",
-      "source_image": "ubuntu-1410-utopic-v20150202",
-      "zone": "us-central1-a",
-      "image_name": "redmine-{{timestamp}}-{{user `git_branch`}}-{{user `git_commit`}}"
-    },
-    {
       "type": "docker",
       "image": "ubuntu:14.10",
       "commit": "true" 
@@ -37,7 +29,7 @@
         [
             {
                 "type": "docker-tag",
-                "repository": "gcr.io/{{user `project_id`}}/redmine",
+                "repository": "127.0.0.1:5000/{{user `project_id`}}/redmine",
                 "tag": "{{user `git_branch`}}-{{user `git_commit`}}",
                 "only": ["docker"]
             }
